@@ -10,29 +10,22 @@ export class App extends Component {
     bad: 0,
   };
 
-  onLeaveFeedback = () => {
+  onLeaveFeedback = event => {
+    const { name } = event.target;
     this.setState(prevState => {
       return {
-        good: prevState.good + 1,
+        [name]: prevState[name] + 1,
       };
     });
   };
 
-  onLeaveFeedback1 = () => {
-    this.setState(prevState => {
-      return {
-        neutral: prevState.neutral + 5,
-      };
-    });
-  };
-
-  onLeaveFeedback2 = () => {
-    this.setState(prevState => {
-      return {
-        bad: prevState.bad - 1,
-      };
-    });
-  };
+  // onLeaveFeedback = () => {
+  //   this.setState(prevState => {
+  //     return {
+  //       neutral: prevState.neutral + 5,
+  //     };
+  //   });
+  // };
 
   // onLeaveFeedback = event => {
   //   const target = event.target;
@@ -45,9 +38,11 @@ export class App extends Component {
       <>
         <Section title="Please leave feedback">
           <FeedbackOptions
-            oNgood={this.onLeaveFeedback}
-            oNneutral={this.onLeaveFeedback1}
-            ONbad={this.onLeaveFeedback2}
+            options={Object.keys(this.state)}
+            onLeaveFeedback={this.onLeaveFeedback}
+            // oNgood={this.onLeaveFeedback}
+            // oNneutral={this.onLeaveFeedback1}
+            // ONbad={this.onLeaveFeedback2}
           />
         </Section>
         <Section title="Statistics">
