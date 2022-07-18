@@ -1,3 +1,6 @@
+import PropTypes from 'prop-types';
+import styles from './styles.module.css'
+
 export const Statistics = ({
   good,
   neutral,
@@ -6,7 +9,7 @@ export const Statistics = ({
   positivePercentage,
 }) => {
   return (
-    <div>
+    <div className={styles.statistics}>
       <span>Good: {good}</span>
       <span>Neutral: {neutral}</span>
       <span>Bad: {bad}</span>
@@ -14,4 +17,12 @@ export const Statistics = ({
       <span>Positive Feedback: {positivePercentage} %</span>
     </div>
   );
+};
+
+Statistics.propTypes = {
+  good: PropTypes.number.isRequired,
+  neutral: PropTypes.number.isRequired,
+  bad: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+  positivePercentage: PropTypes.number.isRequired
 };
